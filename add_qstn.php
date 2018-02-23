@@ -82,11 +82,11 @@ header("Location:adminlogin.php");
 							<li class="has-dropdown">
 							<a href="#">Type</a>
 							<ul class="dropdown">
-							<li><a href="type.php?type=easy">EASY</a></li>
-							<li><a href="type.php?type=medium">MEDIUM</a></li>
-							<li><a href="type.php?type=hard">HARD</a></li>
+							<li><a href="type.php?type=easy" onclick="alert(`you selected level easy.`)">EASY</a></li>
+							<li><a href="type.php?type=medium" onclick="alert(`you selected level easy.`)">MEDIUM</a></li>
+							<li><a href="type.php?type=hard" onclick="alert(`you selected level easy.`)">HARD</a></li>
 							</ul>
-							<li><a href="logout.php">Logout</a></li>
+							<li><a href="logout.php" onclick="alert(`you selected level easy.`)">Logout</a></li>
 
 						</li>
 					</div>

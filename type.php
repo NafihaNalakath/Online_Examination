@@ -13,6 +13,6 @@ elseif ($r1=='medium')
 elseif($r1=='hard')
 {
 $hard=(mysqli_query($connection,"UPDATE `type` SET `type`='hard' where `id`='0'"));
-
 }
+header("location:home.php");
  ?>

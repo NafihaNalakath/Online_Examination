@@ -66,12 +66,12 @@
 
 			<div class="row">
 				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo"><a href="home.html">HOME <em>.</em></a></div>
+					<div id="gtco-logo"><a href="home.php">HOME <em>.</em></a></div>
 				</div>
 
 			<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li><a href="home.html">HOME</a></li>
+						<li><a href="home.php">HOME</a></li>
 						<li class="has-dropdown">
 							<a href="#">Manage questions</a>
 							<ul class="dropdown">
@@ -84,9 +84,9 @@
 						<li class="has-dropdown">
 						<a href="#">TYPE</a>
 						<ul class="dropdown">
-						<li><a href="type.php?type=easy">EASY</a></li>
-						<li><a href="type.php?type=medium">MEDIUM</a></li>
-						<li><a href="type.php?type=hard">HARD</a></li>
+						<li><a href="type.php?type=easy"  onclick="alert(`you selected level easy.`)">EASY</a></li>
+						<li><a href="type.php?type=medium" onclick="alert(`you selected level medium.`)">MEDIUM</a></li>
+						<li><a href="type.php?type=hard" onclick="alert(`you selected level hard.`)">HARD</a></li>
 						</ul>
 <li><a href="logout.php">Logout</a></li>
 					</li>

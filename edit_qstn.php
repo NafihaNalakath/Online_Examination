@@ -8,12 +8,11 @@ header("Location:adminlogin.php");
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Traveler &mdash; Free Website Template, Free HTML5 Template by GetTemplates.co</title>
+	<title>ABC Examination</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<meta name="author" content="GetTemplates.co" />
-
   	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
@@ -84,18 +83,7 @@ header("Location:adminlogin.php");
 					<div class="col-xs-8 text-right menu-1">
 						<ul>
 
-							<li class="has-dropdown">
-								<a href="#">Manage questions</a>
-								<ul class="dropdown">
-									<li><a href="#">Add Qn</a></li>
-									<li><a href="#">Remove qn</a></li>
-									<li><a href="#">Edit Qn</a></li>
-									<li><a href="instruction.html">Add insructions</a></li>
-									<li><a href="#">Edit insructions</a></li>
-								</ul>
-							</li>
-							<li><a href="pricing.html">Pricing</a></li>
-							<li><a href="contact.html">Contact</a></li>
+
 						</ul>
 					</div>
 				</div>

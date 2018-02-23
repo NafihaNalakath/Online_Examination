@@ -13,9 +13,7 @@ if($result=mysqli_fetch_array($r1))
   $_SESSION[roll_num]="$r";
   header("Location:einstruction.php");
 }else {
-
-  echo "Inavalid student name or rollnuber";
-    header("Location:stlogin.html") ;
-
+    echo "Inavalid student name or rollnuber";
+    header("Location:index.html") ;
 }
  ?>

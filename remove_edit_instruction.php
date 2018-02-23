@@ -113,7 +113,6 @@ header("Location:adminlogin.php");
 				<div class="col-sm-4 col-xs-12">
 					<div id="gtco-logo"><a href="home.php">Home <em>.</em></a></div>
 				</div>
-
 		</div>
 	</nav>
 
@@ -124,12 +123,7 @@ header("Location:adminlogin.php");
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-9 col-md-offset-0 text-left">
-
-
 					<div class="row row-mt-15em">
-						<!--<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
-							<h1>Planing Trip To Anywhere in The World?</h1>
-						</div>-->
 						<div class="col-md-12 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
 							<div class="form-wrap">
 								<div class="tab">
@@ -141,14 +135,13 @@ header("Location:adminlogin.php");
 
       <?php
 					include "connection.php";
-
-			$result1= mysqli_query($connection,"SELECT `id`,`instruction` FROM `instructions`");
+			$insruction= mysqli_query($connection,"SELECT `id`,`instruction` FROM `instructions`");
 				echo"<table id='customers' border='1' bold><tr>
 			<td>ID</td>
 			<td>Instructions</td>
 			<td>REMOVE</td>
 			<td>EDIT</td></tr>";
-						    while($array=mysqli_fetch_array($result1))
+						    while($array=mysqli_fetch_array($insruction))
       			    {
       						$a=$array['id'];
       					echo"	<div style='overflow-x:auto;'><tr><td>";

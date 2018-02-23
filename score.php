@@ -1,13 +1,13 @@
 <?php
 session_start();
 if(empty($_SESSION["login_user"]))
-header("Location:stlogin.html");
+header("Location:index.html");
 ?>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Traveler &mdash; Free Website Template, Free HTML5 Template by GetTemplates.co</title>
+<title>ABC Examination</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
 <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -64,7 +64,7 @@ header("Location:stlogin.html");
     <div class="row">
       <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
         <h2></h2>
-        <h2><p>All the Best<?php echo $_SESSION["login_user"]; ?></p></h2>
+        <h2><p>All the Best  <?php echo $_SESSION["login_user"]; ?></p></h2>
       </div>
     </div>
 
@@ -110,16 +110,9 @@ echo'<div class="row">
         </div>
        </div>';
        $username=$_SESSION["login_user"];
-            $insert=mysqli_query($connection,"INSERT INTO `score`(`student_name`, `total_qn`, `score`) VALUES('$username','$r1','$count')");
-
-
+       $insert=mysqli_query($connection,"INSERT INTO `score`(`student_name`, `total_qn`, `score`) VALUES('$username','$r1','$count')");
        session_destroy();
-
-
-     // $result=mysqli_query($connection,"INSERT INTO `score`(`id`, `student_name`, `total_qn`, `score`)
-       //VALUES( '','','$r1','$count')");
-
- ?>
+     ?>
 
 
 
