@@ -4,6 +4,82 @@ session_start();
 if(empty($_SESSION["login_user"]))
 header("Location:adminlogin.php");
 ?>
+<?php
+    if($_SERVER["REQUEST_METHOD"]=="POST")
+     {
+	    include "connection.php";
+	    $id=$_GET['id'];
+	 //$name=$_GET['name'];
+	    $ty=$_POST['type'];
+	    $answer=$_POST['canswr'];
+	    $question=$_POST['question'];
+	     $qn=mysqli_query($connection,"UPDATE `questions` SET
+	     `qstn`='$question',`type`='$ty' where `qstn_id`='$id'" );
+	     for($i=1;$i<5;$i++)
+	     {
+	     ${'answer'.$i}=$_POST['answer'.$i];
+	     echo ${'answer'.$i};
+	     ${'an'.$i}=${'answer'.$i};
+	   }
+	     //$an=mysqli_query($connection,"UPDATE `answers` SET
+	     //`answers`='$a',`correct_answer`='$correctan' where `id`='$id'");
+	     $del=mysqli_query($connection,"DELETE from `answers` WHERE `qstnid`='$id'");
+	       if($answer=='1')
+	       {
+	         $q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	           VALUES ('$id','$an1','1')");
+	           $q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	             VALUES ('$id','$an2','0')");
+	           $q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	               VALUES ('$id','$an3','0')");
+	            $q3=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	                VALUES ('$id','$an4','0')");
+	         }
+	           else if ($answer=='2')
+	         {
+	         $q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	           VALUES ('$id','$an1','0')");
+	           $q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	             VALUES ('$id','$an2','1')");
+	           $q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	               VALUES ('$id','$an3','0')");
+	            $q3=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	                VALUES ('$id','$an4','0')");
+	           }
+
+	           else if($answer=='3')
+	           {
+	           $q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	             VALUES ('$id','$an1','0')");
+	             $q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	               VALUES ('$id','$an2','0')");
+	             $q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	                 VALUES ('$id','$an3','1')");
+	              $q3=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	                  VALUES ('$id','$an4','0')");
+	             }
+
+	           elseif($answer=='4')
+	             {
+	             $q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	               VALUES ('$id','$an1','0')");
+	               $q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	                 VALUES ('$id','$an2','0')");
+	               $q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	                   VALUES ('$id','$an3','0')");
+	                $q3=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+	                    VALUES ('$id','$an4','1')");
+	               }
+	 header("Location:remove_edit.php");
+
+	       echo"qstn edited successfully";
+}
+	 ?>
+
+
+
+
+
 <html>
 	<head>
 	<meta charset="utf-8">
@@ -104,7 +180,7 @@ header("Location:adminlogin.php");
 				<?php
 				include "connection.php";
 						$q3=$_GET['id'];
-				echo "<form method='POST' action='edit_qstn1.php?id=".$q3."'>";
+				echo "<form method='POST' action='edit_qstn.php?id=".$q3."'>";
 				echo'<div class="row animate-box">
 									<div class="col-md-8 col-md-offset-2">
 										<form class="form-inline" method="POST">

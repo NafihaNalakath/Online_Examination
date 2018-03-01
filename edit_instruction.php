@@ -3,6 +3,16 @@ session_start();
 if(empty($_SESSION["login_user"]))
 header("Location:adminlogin.php");
 ?>
+<?php
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+include "connection.php";
+$id=$_GET['id'];
+$instruction=$_POST['instruction'];
+$qn=mysqli_query($connection,"UPDATE `instructions` SET `instruction`='$instruction' WHERE `id`='$id' " );
+header("Location:remove_edit_instruction.php");
+}
+?>
 <html>
 	<head>
 	<meta charset="utf-8">
@@ -107,7 +117,7 @@ header("Location:adminlogin.php");
       				<div class="col-md-8 col-md-offset-">
 								<?php
 								$a=$_GET['id'];
-								echo'<form class="form-inline"  method="POST" action="edit_instruction1.php?id='.$a.'">
+								echo'<form class="form-inline"  method="POST" action="edit_instruction.php?id='.$a.'">
       						<div class="col-md-9 col-sm-3">
       							<div class="form-group">
       								<label for="email" class="sr-only">Email</label>

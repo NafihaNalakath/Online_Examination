@@ -3,6 +3,18 @@ session_start();
 if(empty($_SESSION["login_user"]))
 header("Location:adminlogin.php");
 ?>
+<!-- inserting instructions-->
+<?php
+  if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+include "connection.php";
+$id=uniqid();
+$in=$_POST['instruction'];
+$instruction=$_POST['instruction'];
+$instruction_query=mysqli_query($connection,"INSERT INTO `instructions`(`qstn_id`, `instruction`) VALUES ('$id','$instruction')");
+header("Location:add_instruction.php");
+}
+?>
 <html>
 	<head>
 	<meta charset="utf-8">
@@ -105,7 +117,7 @@ header("Location:adminlogin.php");
       			</div>
       			<div class="row animate-box">
       				<div class="col-md-8 col-md-offset-">
-      					<form class="form-inline"  method="POST" action="add_instruction1.php">
+      					<form class="form-inline"  method="POST" action="add_instruction.php">
       						<div class="col-md-9 col-sm-3">
       							<div class="form-group">
       								<label for="email" class="sr-only">Email</label>

@@ -2,7 +2,7 @@
 <?php
 session_start();
 if(empty($_SESSION["login_user"]))
-header("Location:stlogin.html");
+header("Location:stlogin.php");
 ?>
 <html>
 	<head>

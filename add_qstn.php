@@ -3,6 +3,81 @@ session_start();
 if(empty($_SESSION["login_user"]))
 header("Location:adminlogin.php");
 ?>
+
+<!-- inserting qstns,answers,and instructions to the db-->
+<!--starts>
+   <?php
+    if($_SERVER["REQUEST_METHOD"]=="POST")
+    {
+      include "connection.php";
+     $type=$_POST["type"];
+    $qstn=$_POST["qstn"];
+    $inst=$_POST["instruction"];
+    $id=uniqid();
+//correct answer of question
+     $answer=$_POST["canswr"];
+
+//multiple choices
+      $an1=$_POST["answer1"];
+    $an2=$_POST["answer2"];
+   $an3=$_POST["answer3"];
+   $an4=$_POST["answer4"];
+
+     $insrtruction_query=mysqli_query($connection,"INSERT INTO `instructions`(`qstn_id`, `instruction`) VALUES('$id','$inst')");
+    $Question_query="INSERT INTO `questions`(`qstn_id`,`qstn`, `type`) VALUES ('$id','$qstn','$type')";
+
+    $result1=mysqli_query($connection,$Question_query);
+   if($answer=='1')
+    {
+   	$q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+		VALUES ('$id','$an1','1')");
+		$q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+			VALUES ('$id','$an2','0')");
+		$q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+				VALUES ('$id','$an3','0')");
+		 $q3=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+				 VALUES ('$id','$an4','0')");
+	}
+		else if ($answer=='2')
+	{
+	$q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+		VALUES ('$id','$an1','0')");
+		$q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+			VALUES ('$id','$an2','1')");
+		$q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+				VALUES ('$id','$an3','0')");
+		 $q3=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+				 VALUES ('$id','$an4','0')");
+		}
+
+		else if($answer=='3')
+		{
+		$q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+			VALUES ('$id','$an1','0')");
+			$q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+				VALUES ('$id','$an2','0')");
+			$q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+					VALUES ('$id','$an3','1')");
+			 $q3=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+					 VALUES ('$id','$an3','0')");
+			}
+
+		elseif($answer=='4')
+			{
+			$q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+				VALUES ('$id','$an1','0')");
+				$q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+					VALUES ('$id','$an2','0')");
+				$q1=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+						VALUES ('$id','$an3','0')");
+				 $q3=mysqli_query($connection,"INSERT INTO `answers`(`qstnid`, `answers`, `correct_answer`)
+						 VALUES ('$id','$an3','1')");
+				}
+header("Location:add_qstn.php") ;
+
+}
+ ?>
+<!--ends-->
 <html>
 	<head>
 	<meta charset="utf-8">
@@ -76,7 +151,7 @@ header("Location:adminlogin.php");
 									<li><a href="qstn.html">Add Qn</a></li>
 									<li><a href="remove_edit.php">Remove/Edit Qn</a></li>
 									<li><a href="instruction.html">Add insructions</a></li>
-									<li><a href="eeditinst.html">Edit insructions</a></li>
+									<li><a href="edit_instruction.php">Edit insructions</a></li>
 								</ul>
 							</li>
 							<li class="has-dropdown">
@@ -111,7 +186,7 @@ header("Location:adminlogin.php");
 									<div class="tab-content">
 										<div class="tab-content-inner active" data-content="signup">
 											<h3>Add Your QUESTIONS</h3>
-											<form action="add_qstn1.php" method="POST">
+											<form action="add_qstn.php" method="POST">
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="fullname">Enter your question</label>
@@ -186,9 +261,8 @@ header("Location:adminlogin.php");
 											</form>
 										</div>
 									</div></div></div>
-								</div>`;
-							}
-							?>
+								</div>
+
 
             	<!-- jQuery -->
   	<script src="js/jquery.min.js"></script>

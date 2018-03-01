@@ -2,7 +2,7 @@
 <?php
 session_start();
 if(empty($_SESSION["login_user"]))
-header("Location:stlogin.html");
+header("Location:index.php");
 ?>
 <html>
 	<head>
@@ -70,7 +70,7 @@ header("Location:stlogin.html");
 
 			<div class="row">
 				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo"><a href="stlogin.html">Home <em>.</em></a></div>
+					<div id="gtco-logo"><a href="index.php">Home <em>.</em></a></div>
 				</div>
 
 		</div>
@@ -145,7 +145,7 @@ header("Location:stlogin.html");
                           while($an=mysqli_fetch_array($answr))
                           {
 														    $a=$an['correct_answer'];
-                             echo'<input type="radio" name="answer'.($i-1).'" value="'.$a.'">';
+                             echo'<input type="radio" name="answer'.($i-1).'" value="'.$a.' required">';
 													echo '<input type="hidden" name="typ" value="'.$typ.'" >';
 													echo '';
 													echo $an['answers'];
